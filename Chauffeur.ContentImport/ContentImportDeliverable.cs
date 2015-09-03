@@ -70,9 +70,9 @@ namespace Chauffeur.ContentImport
 
                 var documentSets = documentNode.Elements("DocumentSet");
 
-                documentSets.Select(ds => packagingService.ImportContent(ds));
+                var content = documentSets.Select(ds => packagingService.ImportContent(ds));
 
-                await Out.WriteLineAsync(string.Format("Documents have been imported from '{0}'.", name));
+                await Out.WriteLineAsync(string.Format("{0} documents have been imported from '{1}'. You'll need to publish from the back office to make the content live.", content.Count(), name));
             }
         }
     }
