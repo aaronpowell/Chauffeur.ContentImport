@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chauffeur.ContentImport", "Chauffeur.ContentImport\Chauffeur.ContentImport.csproj", "{1CCA4D2A-C22D-4B1E-82CC-5B9A92CC522C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chauffeur.ContentImport.Demo", "Chauffeur.ContentImport.Demo\Chauffeur.ContentImport.Demo.csproj", "{7AC052A5-3E0A-421D-9B15-3CC27AC3989C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{1CCA4D2A-C22D-4B1E-82CC-5B9A92CC522C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CCA4D2A-C22D-4B1E-82CC-5B9A92CC522C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1CCA4D2A-C22D-4B1E-82CC-5B9A92CC522C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AC052A5-3E0A-421D-9B15-3CC27AC3989C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AC052A5-3E0A-421D-9B15-3CC27AC3989C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AC052A5-3E0A-421D-9B15-3CC27AC3989C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AC052A5-3E0A-421D-9B15-3CC27AC3989C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
