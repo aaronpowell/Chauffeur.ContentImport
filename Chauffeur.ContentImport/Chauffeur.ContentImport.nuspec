@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Chauffeur.ContentImport</id>
+    <version>@build.number@</version>
+    <authors>@authors@</authors>
+    <owners>@authors@</owners>
+    <summary>@summary@</summary>
+    <licenseUrl>https://github.com/aaronpowell/Chauffeur.ContentImport/blob/master/License.md</licenseUrl>
+    <projectUrl>https://github.com/aaronpowell/Chauffeur.ContentImport/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>@description@</description>
+    <releaseNotes>@releaseNotes@</releaseNotes>
+    <copyright>Copyright 2014</copyright>
+    <tags>umbraco deployment</tags>
+    <dependencies>
+      <dependency id="Chauffeur" version="0.6.2" />
+    </dependencies>
+  </metadata>
+</package>

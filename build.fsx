@@ -48,7 +48,7 @@ Target "RestorePackages" (fun _ ->
 )
 
 Target "BuildApp" (fun _ ->
-    MSBuild null "Build" ["Configuration", buildMode] ["Chauffeur.sln"]
+    MSBuild null "Build" ["Configuration", buildMode] ["Chauffeur.ContentImport.sln"]
     |> Log "AppBuild-Output: "
 )
 
