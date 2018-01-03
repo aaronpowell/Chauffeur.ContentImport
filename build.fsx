@@ -27,9 +27,7 @@ let projectName = "Chauffeur.ContentImport"
 let summary = "Chauffeur.ContentImport is a plugin for Chauffeur that uses the Umbraco Packaging API to import and publish content."
 let description = summary
 
-let releaseNotes =
-    File.read "ReleaseNotes.md"
-        |> Fake.ReleaseNotesHelper.parseReleaseNotes
+let releaseNotes = ReleaseNotes.LoadReleaseNotes "ReleaseNotes.md"
 
 let trimBranchName (branch: string) =
     let trimmed = match branch.Length > 10 with
@@ -57,12 +55,12 @@ Target.Create "AssemblyInfo" (fun _ ->
         [ Fake.DotNet.AssemblyInfo.Product projectName
           Fake.DotNet.AssemblyInfo.Title "Chauffeur Content Import tools"
           Fake.DotNet.AssemblyInfo.Version releaseNotes.AssemblyVersion
-          Fake.DotNet.AssemblyInfo.FileVersion releaseNotes.AssemblyVersion
-          Fake.DotNet.AssemblyInfo.InformationalVersion releaseNotes.AssemblyVersion
+          Fake.DotNet.AssemblyInfo.FileVersion nugetVersion
+          Fake.DotNet.AssemblyInfo.InformationalVersion nugetVersion
           Fake.DotNet.AssemblyInfo.ComVisible false
           Fake.DotNet.AssemblyInfo.Metadata("githash", commitHash) ]
 
-    CreateCSharp "AssemblyInfo.cs" attributes
+    CreateCSharp "./SolutionInfo.cs" attributes
 )
 
 Target.Create "Clean" (fun _ ->
