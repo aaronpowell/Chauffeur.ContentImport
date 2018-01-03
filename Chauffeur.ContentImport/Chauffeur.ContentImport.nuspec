@@ -11,10 +11,10 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>@description@</description>
     <releaseNotes>@releaseNotes@</releaseNotes>
-    <copyright>Copyright 2014</copyright>
+    <copyright>Copyright 2018</copyright>
     <tags>umbraco deployment</tags>
     <dependencies>
-      <dependency id="Chauffeur" version="0.6.2" />
+      <dependency id="Chauffeur" version="0.12.2" />
     </dependencies>
   </metadata>
 </package>
