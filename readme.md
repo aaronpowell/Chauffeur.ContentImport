@@ -1,5 +1,11 @@
 # Chauffeur.ContentImport
 
+| Build type | Status | NuGet |
+| --- | --- | --- |
+| master | [![Build status](https://ci.appveyor.com/api/projects/status/ih7j4u7yyl7xj6re/branch/master?svg=true)](https://ci.appveyor.com/project/aaronpowell/chauffeur-ContentImport/branch/master) | [![NuGet Badge](https://buildstats.info/nuget/Chauffeur.ContentImport)](https://www.nuget.org/packages/Chauffeur.ContentImport/) |
+| dev | [![Build status](https://ci.appveyor.com/api/projects/status/ih7j4u7yyl7xj6re?svg=true)](https://ci.appveyor.com/project/aaronpowell/chauffeur-ContentImport) | [![NuGet Badge](https://buildstats.info/nuget/Chauffeur.ContentImport?includePreReleases=true)](https://www.nuget.org/packages/Chauffeur.ContentImport/) |
+
+
 The Umbraco Packaging API allows you to import and publish content through it, this [Chauffeur](https://github.com/aaronpowell/chauffeur) plugin allows content to be imported through that API.
 
 **Note: This should not be used as a replacement of a full content promotion tool like Courier, it's for one-time content importing.**

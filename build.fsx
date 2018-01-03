@@ -1,7 +1,8 @@
-#I @"tools/FAKE/tools/"
+#I @"tools/FAKE.Core/tools/"
 #r @"FakeLib.dll"
 
 open Fake
+open Fake.AssemblyInfoFile
 
 let authors = ["Aaron Powell"]
 
@@ -11,22 +12,31 @@ let packagingDir = packagingRoot @@ "chauffeur.ContentImport"
 
 let buildMode = getBuildParamOrDefault "buildMode" "Release"
 
-let isAppVeyorBuild = environVar "APPVEYOR" <> null
-
-open Fake.AssemblyInfoFile
+let isAppVeyorBuild = not (isNull (environVar "APPVEYOR"))
 
 let projectName = "Chauffeur.ContentImport"
-let summary = "Chauffeur.ContentImport is a plugin for Chauffeur that uses the Umbraco Packaging API to import content."
+let summary = "Chauffeur.ContentImport is a plugin for Chauffeur that uses the Umbraco Packaging API to import and publish content."
 let description = summary
 
 let releaseNotes =
     ReadFile "ReleaseNotes.md"
         |> ReleaseNotesHelper.parseReleaseNotes
 
-let prv = match releaseNotes.SemVer.PreRelease with
-    | Some pr -> sprintf "-%s%s" pr.Name (if environVar "APPVEYOR_BUILD_NUMBER" <> null then environVar "APPVEYOR_BUILD_NUMBER" else "")
-    | None -> ""
+let trimBranchName (branch: string) =
+    let trimmed = match branch.Length > 10 with
+                    | true -> branch.Substring(0, 10)
+                    | _ -> branch
 
+    trimmed.Replace(".", "")
+
+let prv = match environVar "APPVEYOR_REPO_BRANCH" with
+            | null -> ""
+            | "master" -> ""
+            | branch -> sprintf "-%s%s" (trimBranchName branch) (
+                            match environVar "APPVEYOR_BUILD_NUMBER" with
+                            | null -> ""
+                            | _ -> sprintf "-%s" (environVar "APPVEYOR_BUILD_NUMBER")
+                            )
 let nugetVersion = sprintf "%d.%d.%d%s" releaseNotes.SemVer.Major releaseNotes.SemVer.Minor releaseNotes.SemVer.Patch prv
 
 Target "Default" DoNothing
@@ -44,10 +54,10 @@ Target "Clean" (fun _ ->
 )
 
 Target "RestorePackages" (fun _ ->
-    RestorePackage (fun p -> p) "./Chauffeur.ContentImport/packages.config"
+    RestorePackage (id) "./Chauffeur.ContentImport/packages.config"
 )
 
-Target "BuildApp" (fun _ ->
+Target "Build" (fun _ ->
     MSBuild null "Build" ["Configuration", buildMode] ["Chauffeur.ContentImport.sln"]
     |> Log "AppBuild-Output: "
 )
@@ -60,7 +70,7 @@ Target "UnitTests" (fun _ ->
                 OutputFile = (sprintf "./Chauffeur.ContentImport.Tests/bin/%s/TestResults.xml" buildMode) })
 )
 
-Target "CreatePackage" (fun _ ->
+Target "Package" (fun _ ->
     let libDir = packagingDir @@ "lib/net45/"
     CleanDirs [libDir]
 
@@ -90,9 +100,13 @@ Target "BuildVersion" (fun _ ->
 "Clean"
     =?> ("BuildVersion", isAppVeyorBuild)
     ==> "RestorePackages"
-    ==> "BuildApp"
-//    ==> "UnitTests"
-    ==> "CreatePackage"
+    ==> "Build"
     ==> "Default"
+
+//"Build"
+    // ==> "UnitTests"
+
+"Build"
+    ==> "Package"
 
 RunTargetOrDefault "Default"
