@@ -7,7 +7,7 @@ open Fake.AssemblyInfoFile
 let authors = ["Aaron Powell"]
 
 let chauffeurContentImporterDir = "./Chauffeur.ContentImport/bin/"
-let packagingRoot = "./packaging/"
+let packagingRoot = "./.packaging/"
 let packagingDir = packagingRoot @@ "chauffeur.ContentImport"
 
 let buildMode = getBuildParamOrDefault "buildMode" "Release"
