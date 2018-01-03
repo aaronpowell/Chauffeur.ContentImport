@@ -31,6 +31,6 @@ Chauffeur.ContentImport.Demo/App_Data/*.config
 Chauffeur.ContentImport.Demo/App_Data/*.sdf
 Chauffeur.ContentImport.Demo/media
 tools
-packaging
+.packaging
 .vs
 .fake
