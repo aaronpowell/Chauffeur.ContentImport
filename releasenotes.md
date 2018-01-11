@@ -1,3 +1,7 @@
+## New in 0.2.1 (Released 2018/01/11)
+
+* Fixing the parsing of the `children` flag for publishing content
+
 ## New in 0.2.0 (Released 2018/01/03)
 
 * Updated to the latest Chauffeur stable build

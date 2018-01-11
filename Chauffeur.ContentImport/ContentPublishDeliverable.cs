@@ -12,7 +12,7 @@ namespace Chauffeur.ContentImport
     public class ContentPublishDeliverable : Deliverable
     {
         private readonly IContentService contentService;
-        private static Regex flagsRegex = new Regex("-(?<flag>user|children)=(?<value>\\w)");
+        private static Regex flagsRegex = new Regex("-(?<flag>user|children)=(?<value>\\w*)");
 
         public ContentPublishDeliverable(
             TextReader reader,
@@ -42,7 +42,9 @@ namespace Chauffeur.ContentImport
             return await PublishContent(
                 contentIds,
                 flags.ContainsKey("user") ? int.Parse(flags["user"]) : 0,
-                flags.ContainsKey("children") ? bool.Parse(flags["children"]) : false
+                flags.ContainsKey("children") && bool.TryParse(flags["children"], out bool children) ?
+                        children :
+                        false
             );
         }
 
