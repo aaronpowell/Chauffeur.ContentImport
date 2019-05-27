@@ -230,6 +230,7 @@
     <Compile Include="..\SolutionInfo.cs">
       <Link>Properties\SolutionInfo.cs</Link>
     </Compile>
+    <Compile Include="ContentExportDeliverable.cs" />
     <Compile Include="ContentImportDeliverable.cs" />
     <Compile Include="ContentPublishDeliverable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
