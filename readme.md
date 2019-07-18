@@ -18,6 +18,12 @@ The Umbraco Packaging API allows you to import and publish content through it, t
 
 This will look for a file (sans `.xml` extension) which is an Umbraco Package and will import the content from within it.
 
+## `content-export`
+
+    umbraco> content-export PackageName
+
+This will export an xml file which is an Umbraco Package containing the content of your site.
+
 ## `content-publish`
 
     umbraco> content-publish <?ids> -user=<userId> -children=true|false
